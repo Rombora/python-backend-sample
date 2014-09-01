@@ -50,9 +50,9 @@ class RegisterHandler(RestResource):
 		salt = uuid.uuid4().hex	
 		userBase[user['username']] = salt, hashlib.sha256(salt + user['password'] + '31337 salted').hexdigest()
 
-		print 'Created user, now the user base is:'
+		print ('Created user, now the user base is:')
 		for name in userBase:
-			print '\t' + name + '\t' + userBase[name][1]
+			print ('\t' + name + '\t' + userBase[name][1])
 
 class LoginHandler(RestResource):
 	def post(self):
