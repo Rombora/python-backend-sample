@@ -19,9 +19,9 @@ Default port is 2048
 
 
 ### Usage
-The demo backend expose two resources
-/register - Register user
-/login - Authentication as user
+The demo backend expose two resources:
+* /register - Register user
+* /login - Authentication as user
 
 Send a JSON object to either of these resources to either register a user or authenticate as a user.
 
