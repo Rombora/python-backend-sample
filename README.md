@@ -32,7 +32,7 @@ Example JSON object: {username: 'someUserName', password: 'highlySecurePwd'}
 _Note: You can't authenticate as a user before it's registered!_
 
 
-### Example in Javascript
+### Use backend w. Sinch JS SDK
 
 ```javascript
 var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
