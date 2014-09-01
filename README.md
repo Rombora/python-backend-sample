@@ -12,8 +12,10 @@ pip (python package index)
 
 
 ### Installation & start
-pip install tornado (or upgrade)
+´´´bash
+pip install tornado #or upgrade
 ./backend-example.py
+´´´
 
 Default port is 2048
 
