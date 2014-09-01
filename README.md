@@ -31,27 +31,26 @@ Note: You can't authenticate as a user before it's registered!
 
 
 ### Example in Javascript
+__Using Sinch JS SDK and jQuery__
 
 ```javascript
-<script>
-	var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
+var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
 
-	$.post('http://localhost:2048/login', loginObj, {}, "json")
-		.done(function(authTicket) {
+$.post('http://localhost:2048/login', loginObj, {}, "json")
+	.done(function(authTicket) {
 
-			sinchClient2.start(authTicket)
-				.then(function() {
-					console.log('SUCCESS!');
-				})
-				.fail(function(error) {
-					console.error('SinchClient fail!');
-				})
-				.done();
-		})
-		.fail(function(error) {
-			console.error('Auth failure!');
-		});
-</script>
+		sinchClient2.start(authTicket)
+			.then(function() {
+				console.log('SUCCESS!');
+			})
+			.fail(function(error) {
+				console.error('SinchClient fail!');
+			})
+			.done();
+	})
+	.fail(function(error) {
+		console.error('Auth failure!');
+	});
 ```
 
 
