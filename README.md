@@ -6,8 +6,8 @@ See rows ~100-120 for code on generating a Sinch compatible authentication token
 
 
 ### Requirements
-Python >= 2.7.X | >= 3.X
-Tornado >= 4.0.1
+Python >= 2.7.X | >= 3.X  
+Tornado >= 4.0.1  
 pip (python package index)
 
 
