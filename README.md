@@ -27,7 +27,7 @@ Send a JSON object to either of these resources to either register a user or aut
 
 Example JSON object: {username: 'someUserName', password: 'highlySecurePwd'}
 
-Note: You can't authenticate as a user before it's registered!
+_Note: You can't authenticate as a user before it's registered!_
 
 
 ### Example in Javascript
