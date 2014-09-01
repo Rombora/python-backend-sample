@@ -31,7 +31,6 @@ Note: You can't authenticate as a user before it's registered!
 
 
 ### Example in Javascript
-_Using Sinch JS SDK and jQuery_
 
 ```javascript
 var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
@@ -52,5 +51,6 @@ $.post('http://localhost:2048/login', loginObj, {}, "json")
 		console.error('Auth failure!');
 	});
 ```
+_Using Sinch JS SDK and jQuery_
 
 
