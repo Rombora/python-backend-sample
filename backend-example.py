@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+Licensed under the MIT Licence, Copyright (c) 2014 Sinch / Rebtel Networks AB
+
+"""
 import tornado.ioloop
 import tornado.web
 from tornado.web import Finish
