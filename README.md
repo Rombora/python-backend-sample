@@ -33,7 +33,7 @@ Note: You can't authenticate as a user before it's registered!
 ##Example in Javascript
 (with Sinch JS SDK)
 
-'''
+```
 <script>
 	var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
 
@@ -53,6 +53,6 @@ Note: You can't authenticate as a user before it's registered!
 			console.error('Auth failure!');
 		});
 </script>
-'''
+```
 
 
