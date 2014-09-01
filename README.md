@@ -31,7 +31,7 @@ Note: You can't authenticate as a user before it's registered!
 
 
 ### Example in Javascript
-__Using Sinch JS SDK and jQuery__
+___Using Sinch JS SDK and jQuery___
 
 ```javascript
 var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
