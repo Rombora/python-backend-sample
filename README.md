@@ -1,4 +1,4 @@
-## Sinch auth token backend example
+## Sinch authentication token backend example
 
 This demonstrates a basic partner backend for generating authentication tokens. 
 In this example the user database is not persistent: Only for demonstrational purpose!
