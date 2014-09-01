@@ -1,24 +1,24 @@
-# Sinch authentication token backend example
+## Sinch auth token backend example
 
 This demonstrates a basic partner backend for generating authentication tokens. 
 In this example the user database is not persistent: Only for demonstrational purpose!
 See rows ~100-120 for code on generating a Sinch compatible authentication token.
 
 
-## Requirements
+### Requirements
 Python >= 2.7.X | >= 3.X
 Tornado >= 4.0.1
 pip (python package index)
 
 
-##Installation & start
+### Installation & start
 pip install tornado (or upgrade)
 ./backend-example.py
 
 Default port is 2048
 
 
-##Usage
+### Usage
 The demo backend expose two resources
 /register - Register user
 /login - Authentication as user
@@ -30,10 +30,9 @@ Example JSON object: {username: 'someUserName', password: 'highlySecurePwd'}
 Note: You can't authenticate as a user before it's registered!
 
 
-##Example in Javascript
-(with Sinch JS SDK)
+### Example in Javascript
 
-```
+```javascript
 <script>
 	var loginObj = JSON.stringify({'username': 'magnus', 'password': 'superSecure'});
 
