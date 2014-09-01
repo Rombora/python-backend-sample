@@ -2,6 +2,9 @@
 """
 Licensed under the MIT Licence, Copyright (c) 2014 Sinch / Rebtel Networks AB
 
+This demonstrates a basic partner backend for generating authentication tokens. 
+In this example the user database is not persistent: Only for demonstrational purpose!
+See rows ~100-120 for code on generating a Sinch compatible authentication token.
 """
 import tornado.ioloop
 import tornado.web
@@ -12,6 +15,9 @@ import uuid
 import hmac
 import hashlib
 import base64
+
+# Port
+HTTP_PORT = 2048
 
 # App key + secret
 APPLICATION_KEY = 'e15e9421-2f30-411b-bd49-00bd5f815e36'
@@ -120,5 +126,12 @@ backend = tornado.web.Application([
 ])
 
 if __name__ == "__main__":
-    backend.listen(2048)
+
+    print ("Starting Sinch demo backend on port: \033[1m" + str(HTTP_PORT) +'\033[0m')
+    print ("Post JSON object to \033[1m/register\033[0m to create user")
+    print ("Post JSON object to \033[1m/login\033[0m to retrieve authentication token")
+    print ("Example JSON: {username: 'someUserName', password: 'highlySecurePwd'}")
+    print ("--- LOG ---")
+
+    backend.listen(HTTP_PORT)
     tornado.ioloop.IOLoop.instance().start()
