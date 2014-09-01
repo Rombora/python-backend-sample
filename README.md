@@ -17,7 +17,7 @@ pip install tornado #or upgrade
 ./backend-example.py
 ```
 
-Default port is 2048
+_Note: default port is 2048_
 
 
 ### Usage
