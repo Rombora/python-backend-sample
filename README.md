@@ -14,6 +14,7 @@ pip (python package manager)
 ### Installation & start
 ```bash
 pip install tornado #or upgrade
+nano backend-example.py #or other editor - set your key & secret
 ./backend-example.py
 ```
 
