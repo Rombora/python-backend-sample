@@ -36,6 +36,7 @@ class RestResource(tornado.web.RequestHandler):
 
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Content-Type", "application/json; charset=UTF-8")
 
     def write_error(self, status_code, **kwargs):
         data = {}
@@ -57,12 +58,11 @@ class RegisterHandler(RestResource):
         user = json.loads(self.request.body)
 
         if 'username' not in user:
-            self.write_error(400, code=40001, message='username not found')
+            self.write_error(400, errorCode=40001, message='username not found')
         if 'password' not in user:
-            self.write_error(400, code=40002, message='password not found')
+            self.write_error(400, errorCode=40002, message='password not found')
         if user['username'] in userBase:
-            self.write_error(
-                400, code=40003, message='user already registered')
+            self.write_error(400, errorCode=40003, message='user already registered')
 
         salt = uuid.uuid4().hex
         userBase[user['username']] = salt, hashlib.sha256(
@@ -72,6 +72,7 @@ class RegisterHandler(RestResource):
         for name in userBase:
             print ('\t' + name + '\t' + userBase[name][1])
 
+        self.write('{}')
 
 class LoginHandler(RestResource):
 
@@ -79,11 +80,11 @@ class LoginHandler(RestResource):
         user = json.loads(self.request.body)
 
         if 'username' not in user:
-            self.write_error(400, code=40001, message='username not found')
+            self.write_error(400, errorCode=40001, message='username not found')
         if 'password' not in user:
-            self.write_error(400, code=40002, message='password not found')
+            self.write_error(400, errorCode=40002, message='password not found')
         if user['username'] not in userBase:
-            self.write_error(400, code=40004, message='user not registered')
+            self.write_error(400, errorCode=40004, message='user not registered')
 
         salt = userBase[user['username']][0]
         correctPassHash = userBase[user['username']][1]
@@ -91,7 +92,7 @@ class LoginHandler(RestResource):
             salt + user['password'] + '31337 salted').hexdigest()
 
         if candidatePassHash != correctPassHash:
-            self.write_error(401, code=40100, message='incorrect password')
+            self.write_error(401, errorCode=40100, message='incorrect password')
         elif candidatePassHash == correctPassHash:  # Correct password
 
             # Implementation of
