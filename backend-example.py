@@ -25,7 +25,29 @@ APPLICATION_SECRET = 'INSERT_YOUR_APP_SECRET_HERE'
 
 userBase = dict()
 
+# Generate Sinch authentication ticket. Implementation of:
+# http://www.sinch.com/docs/rest-apis/api-documentation/#Authorization
+def getAuthTicket(user): 
+    userTicket = {
+        'identity': {'type': 'username', 'endpoint': user['username']},
+        'applicationKey': APPLICATION_KEY,
+        'created': datetime.utcnow().isoformat()
+    }
 
+    userTicketJson = json.dumps(userTicket).replace(" ", "")
+    userTicketBase64 = base64.b64encode(userTicketJson)
+
+    # TicketSignature = Base64 ( HMAC-SHA256 ( ApplicationSecret, UTF8 ( UserTicketJson ) ) )
+    digest = hmac.new(base64.b64decode(
+        APPLICATION_SECRET), msg=userTicketJson, digestmod=hashlib.sha256).digest()
+    signature = base64.b64encode(digest)
+
+    # UserTicket = TicketData + ":" + TicketSignature
+    signedUserTicket = userTicketBase64 + ':' + signature
+    return {'userTicket': signedUserTicket}
+
+
+# REST endpoints
 class PingHandler(tornado.web.RequestHandler):
 
     def get(self):
@@ -72,7 +94,7 @@ class RegisterHandler(RestResource):
         for name in userBase:
             print ('\t' + name + '\t' + userBase[name][1])
 
-        self.write('{}')
+        self.write(json.dumps(getAuthTicket(user)))
 
 class LoginHandler(RestResource):
 
@@ -94,31 +116,8 @@ class LoginHandler(RestResource):
         if candidatePassHash != correctPassHash:
             self.write_error(401, errorCode=40100, message='incorrect password')
         elif candidatePassHash == correctPassHash:  # Correct password
+            self.write(json.dumps(getAuthTicket(user)))
 
-            # Implementation of
-            # http://www.sinch.com/docs/rest-apis/api-documentation/#Authorization
-            userTicket = {
-                'identity': {'type': 'username', 'endpoint': user['username']},
-                'applicationKey': APPLICATION_KEY,
-                'created': datetime.utcnow().isoformat()
-            }
-
-            userTicketJson = json.dumps(userTicket).replace(" ", "")
-            userTicketBase64 = base64.b64encode(userTicketJson)
-
-            # TicketSignature = Base64 ( HMAC-SHA256 ( ApplicationSecret, UTF8 ( UserTicketJson ) ) )
-            digest = hmac.new(base64.b64decode(
-                APPLICATION_SECRET), msg=userTicketJson, digestmod=hashlib.sha256).digest()
-            signature = base64.b64encode(digest)
-
-            # UserTicket = TicketData + ":" + TicketSignature
-            signedUserTicket = userTicketBase64 + ':' + signature
-
-            returnObj = {
-                'userTicket': signedUserTicket
-            }
-
-            self.write(json.dumps(returnObj))
 
 backend = tornado.web.Application([
     (r"/ping", PingHandler),
