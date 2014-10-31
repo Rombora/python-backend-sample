@@ -128,6 +128,7 @@ backend = tornado.web.Application([
 if __name__ == "__main__":
 
     print ("Starting Sinch demo backend on port: \033[1m" + str(HTTP_PORT) +'\033[0m')
+    print ("Application key: \033[1m" + APPLICATION_KEY +'\033[0m')
     print ("Post JSON object to \033[1m/register\033[0m to create user")
     print ("Post JSON object to \033[1m/login\033[0m to retrieve authentication token")
     print ("Example JSON: {username: 'someUserName', password: 'highlySecurePwd'}")
