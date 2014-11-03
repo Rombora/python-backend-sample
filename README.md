@@ -20,6 +20,7 @@ nano backend-example.py #or other editor - set your key & secret
 
 _Note: default port is 2048_
 
+_Note: If you have the JS SDK release bundle, you can proceed with running the SinchAUTHsample. The code below serves as a complete reference._
 
 ### Usage
 The demo backend expose two resources:
