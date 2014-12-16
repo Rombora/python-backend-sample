@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Licensed under the MIT Licence, Copyright (c) 2014 Sinch / Rebtel Networks AB
+Licensed under the MIT Licence, Copyright (c) 2014 Sinch AB
 
 This demonstrates a basic partner backend for generating authentication tokens. 
 In this example the user database is not persistent: Only for demonstrational purpose!
