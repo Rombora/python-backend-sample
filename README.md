@@ -1,8 +1,7 @@
 ## Sinch authentication token backend example
 
 This demonstrates a basic partner backend for generating authentication tokens. 
-In this example the user database is not persistent: Only for demonstrational purpose!  
-See rows ~100-120 for code on generating a Sinch compatible authentication token.
+In this example the user database is not persistent: Only for demonstrational purpose!
 
 
 ### Requirements
