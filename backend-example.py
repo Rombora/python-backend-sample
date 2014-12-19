@@ -30,6 +30,7 @@ userBase = dict()
 def getAuthTicket(user): 
     userTicket = {
         'identity': {'type': 'username', 'endpoint': user['username']},
+        'expiresIn': 3600, #1 hour expiration time of session when created using this ticket
         'applicationKey': APPLICATION_KEY,
         'created': datetime.utcnow().isoformat()
     }
